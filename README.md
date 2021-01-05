@@ -1,5 +1,7 @@
 # FamPay - YouTube Trending API
 
+[![Build Status](https://travis-ci.com/IamRaviTejaG/fampay-assignment.svg?token=vvf8z6vQwjyH6vRq8cg5&branch=master)](https://travis-ci.com/IamRaviTejaG/fampay-assignment)
+
 ## Contents
 - [Getting Started](#getting-started)
 - [Running locally](#running-locally)
