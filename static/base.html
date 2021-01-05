@@ -21,36 +21,38 @@
 <p class="has-line-data" data-line-start="14" data-line-end="15">Start by cloning the repository using: <code>git clone https://github.com/IamRaviTejaG/fampay-assignment.git</code> followed by <code>cd fampay-assignment</code>.</p>
 <p class="has-line-data" data-line-start="16" data-line-end="17">Install all the dependencies (including the dev dependencies) using the <code>npm install</code> or <code>npm i</code> command. Once the dependencies are installed, use <code>npm start</code> to start the server.</p>
 <h2 class="code-line" data-line-start=18 data-line-end=19><a id="Running_locally_18"></a>Running locally</h2>
-<h3 class="code-line" data-line-start=19 data-line-end=20><a id="Using_Docker_19"></a>Using Docker</h3>
-<p class="has-line-data" data-line-start="20" data-line-end="21">Use <code>docker-compose</code> to test the app locally. Make sure to make relevant changes to the environment variables in <code>docker-compose.yml</code> file. Use the following command to build and start the app:</p>
-<pre><code class="has-line-data" data-line-start="22" data-line-end="24" class="language-bash">docker-compose up --build
+<h4 class="code-line" data-line-start=19 data-line-end=20><a id="NOTE_Multiple_Google_API_keys_can_be_specified_to_avoid_quota_exceed_errors_To_do_this_specify_them_as_a_single_string_separated_using____spacepipespace_Example_19"></a>NOTE: Multiple Google API keys can be specified to avoid quota exceed errors. To do this, specify them as a single string, separated using <code>|</code> (space-pipe-space). Example:</h4>
+<p class="has-line-data" data-line-start="20" data-line-end="21"><code>GOOGLE_API_KEY = 'KEY1 | KEY2 | KEY3 | KEY4'</code></p>
+<h3 class="code-line" data-line-start=21 data-line-end=22><a id="Using_Docker_21"></a>Using Docker</h3>
+<p class="has-line-data" data-line-start="22" data-line-end="23">Use <code>docker-compose</code> to test the app locally. Make sure to make relevant changes to the environment variables in <code>docker-compose.yml</code> file. Use the following command to build and start the app:</p>
+<pre><code class="has-line-data" data-line-start="24" data-line-end="26" class="language-bash">docker-compose up --build
 </code></pre>
-<h4 class="code-line" data-line-start=24 data-line-end=25><a id="NOTE_When_on_docker_build_times_may_stretch_to_north_of_120_seconds_Please_be_patient_during_the_same_24"></a>NOTE: When on docker, build times may stretch to north of 120 seconds. Please be patient during the same.</h4>
-<h3 class="code-line" data-line-start=26 data-line-end=27><a id="The_env_file_26"></a>The <code>.env</code> file</h3>
-<p class="has-line-data" data-line-start="27" data-line-end="28">The <code>.env</code> file holds the important variables for the whole application which include the MongoDB URL, Google API keys, Redis URL, etc.</p>
-<h3 class="code-line" data-line-start=29 data-line-end=30><a id="npm_scripts_29"></a>npm scripts</h3>
-<p class="has-line-data" data-line-start="30" data-line-end="31">The <code>package.json</code> file contains three scripts for running locally: <code>linter</code>, <code>build</code> &amp; <code>start</code>.</p>
+<h4 class="code-line" data-line-start=26 data-line-end=27><a id="NOTE_When_on_docker_build_times_may_stretch_to_north_of_120_seconds_Please_be_patient_during_the_same_26"></a>NOTE: When on docker, build times may stretch to north of 120 seconds. Please be patient during the same.</h4>
+<h3 class="code-line" data-line-start=28 data-line-end=29><a id="The_env_file_28"></a>The <code>.env</code> file</h3>
+<p class="has-line-data" data-line-start="29" data-line-end="30">The <code>.env</code> file holds the important variables for the whole application which include the MongoDB URL, Google API keys, Redis URL, etc.</p>
+<h3 class="code-line" data-line-start=31 data-line-end=32><a id="npm_scripts_31"></a>npm scripts</h3>
+<p class="has-line-data" data-line-start="32" data-line-end="33">The <code>package.json</code> file contains three scripts for running locally: <code>linter</code>, <code>build</code> &amp; <code>start</code>.</p>
 <ul>
-<li class="has-line-data" data-line-start="32" data-line-end="34"><code>&quot;linter&quot;: &quot;standard --fix&quot;</code></li>
+<li class="has-line-data" data-line-start="34" data-line-end="36"><code>&quot;linter&quot;: &quot;standard --fix&quot;</code></li>
 </ul>
-<p class="has-line-data" data-line-start="34" data-line-end="35">Runs the StandardJS linter along with the <code>--fix</code> flag, which lints code to a great extent. The traceback (if one shows up) is the list of errors that need to be fixed manually.</p>
+<p class="has-line-data" data-line-start="36" data-line-end="37">Runs the StandardJS linter along with the <code>--fix</code> flag, which lints code to a great extent. The traceback (if one shows up) is the list of errors that need to be fixed manually.</p>
 <ul>
-<li class="has-line-data" data-line-start="36" data-line-end="38"><code>&quot;build&quot;: &quot;rimraf dist/ &amp;&amp; babel ./ --out-dir dist/ --copy-files&quot;</code></li>
+<li class="has-line-data" data-line-start="38" data-line-end="40"><code>&quot;build&quot;: &quot;rimraf dist/ &amp;&amp; babel ./ --out-dir dist/ --copy-files&quot;</code></li>
 </ul>
-<p class="has-line-data" data-line-start="38" data-line-end="39">Builds the project.</p>
+<p class="has-line-data" data-line-start="40" data-line-end="41">Builds the project.</p>
 <ul>
-<li class="has-line-data" data-line-start="40" data-line-end="42"><code>&quot;start&quot;: &quot;npm run build &amp;&amp; node -r dotenv/config dist/index.js --no-deprecation&quot;</code></li>
+<li class="has-line-data" data-line-start="42" data-line-end="44"><code>&quot;start&quot;: &quot;npm run build &amp;&amp; node -r dotenv/config dist/index.js --no-deprecation&quot;</code></li>
 </ul>
-<p class="has-line-data" data-line-start="42" data-line-end="43">First builds the source code and then starts the server.</p>
-<h2 class="code-line" data-line-start=44 data-line-end=45><a id="API_endpoints_44"></a>API endpoints</h2>
-<h4 class="code-line" data-line-start=45 data-line-end=46><a id="1_get_45"></a>1. <code>/get</code></h4>
-<pre><code class="has-line-data" data-line-start="47" data-line-end="51">URL: /get/:page?
+<p class="has-line-data" data-line-start="44" data-line-end="45">First builds the source code and then starts the server.</p>
+<h2 class="code-line" data-line-start=46 data-line-end=47><a id="API_endpoints_46"></a>API endpoints</h2>
+<h4 class="code-line" data-line-start=47 data-line-end=48><a id="1_get_47"></a>1. <code>/get</code></h4>
+<pre><code class="has-line-data" data-line-start="49" data-line-end="53">URL: /get/:page?
 Request type: GET
 Optional data parameters: page
 </code></pre>
-<p class="has-line-data" data-line-start="52" data-line-end="53">NOTE: The <code>page</code> parameter is optional and defaults to page 1.</p>
-<h4 class="code-line" data-line-start=54 data-line-end=55><a id="2_search_54"></a>2. <code>/search</code></h4>
-<pre><code class="has-line-data" data-line-start="56" data-line-end="60">URL: /set/:searchString
+<p class="has-line-data" data-line-start="54" data-line-end="55">NOTE: The <code>page</code> parameter is optional and defaults to page 1.</p>
+<h4 class="code-line" data-line-start=56 data-line-end=57><a id="2_search_56"></a>2. <code>/search</code></h4>
+<pre><code class="has-line-data" data-line-start="58" data-line-end="62">URL: /set/:searchString
 Request type: GET
 Data parameters: searchString
 </code></pre>

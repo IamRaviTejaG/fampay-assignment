@@ -23,15 +23,9 @@ export default {
   refreshData: () => {
     console.log('Refreshing videos data!')
 
-    if (process.env.NEW_GOOGLE_API_KEY !== undefined) {
-      gapi = new googleapis.youtube_v3.Youtube({
-        auth: process.env.NEW_GOOGLE_API_KEY // Pop and take the first element in an array, when exhausted shift to next, and so on
-      })
-    }
-    
     gapi.search.list(params).then(response => {
       const results = resultParser.parseApiResponse(JSON.parse(JSON.stringify(response.data)))
-      // Dump data retrieved from Google API to MongoDB
+      // Dump data retrieved from Google API to MongoDB 
       ItemModel.insertMany(results, { ordered: false }).then(_response => {
         console.log('Refreshed successfully!')
       }).catch(err => {
@@ -39,8 +33,13 @@ export default {
       })
     }).catch(err => {
       if (err.message === constants.QUOTA_EXCEEDED_ERROR_MSG && authKeys.length) {
-        process.env.NEW_GOOGLE_API_KEY = authKeys.shift()
-        console.log(`Quota exceeded for current API key. Updating to new API key: ${process.env.NEW_GOOGLE_API_KEY}`)
+        let newApiKey = authKeys.shift()
+        gapi = new googleapis.youtube_v3.Youtube({
+          auth: newApiKey // Pop and take the first element in an array, when exhausted shift to next, and so on
+        })
+        console.log(`Quota exceeded for current API key. Updating to new API key: ${newApiKey}`)
+      } else {
+        console.error(err)
       }
     })
   }

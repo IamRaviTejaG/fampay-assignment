@@ -17,6 +17,8 @@ Start by cloning the repository using: `git clone https://github.com/IamRaviTeja
 Install all the dependencies (including the dev dependencies) using the `npm install` or `npm i` command. Once the dependencies are installed, use `npm start` to start the server.
 
 ## Running locally
+#### NOTE: Multiple Google API keys can be specified to avoid quota exceed errors. To do this, specify them as a single string, separated using ` | ` (space-pipe-space). Example:
+`GOOGLE_API_KEY = 'KEY1 | KEY2 | KEY3 | KEY4'`
 ### Using Docker
 Use `docker-compose` to test the app locally. Make sure to make relevant changes to the environment variables in `docker-compose.yml` file. Use the following command to build and start the app:
 ```bash
