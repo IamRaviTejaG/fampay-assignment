@@ -1,0 +1,15 @@
+sudo: false
+language: node_js
+node_js:
+- 14
+- lts/*
+services:
+  - mongodb
+  - redis-server
+
+script:
+  - npm i 
+  - npm run build
+
+notifications:
+disabled: true
