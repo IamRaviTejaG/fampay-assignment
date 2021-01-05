@@ -13,7 +13,7 @@ const dbOptions = {
 const dbConnection = mongoose.createConnection(dbURL, dbOptions)
 
 dbConnection.on('connected', () => {
-  console.log('Connected to MongoDB successfully!')
+  console.log('Connected to MongoDB successfully.')
 })
 
 dbConnection.on('error', error => {
