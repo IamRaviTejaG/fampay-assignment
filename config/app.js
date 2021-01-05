@@ -2,6 +2,11 @@ import bodyparser from 'body-parser'
 import express from 'express'
 import morgan from 'morgan'
 import routes from '../routes/routes'
+import apiCaller from '../utils/apiCaller'
+
+apiCaller.refreshData()
+// Refresh data every 15 seconds
+setInterval(apiCaller.refreshData, 15000)
 
 const app = express()
 
