@@ -22,6 +22,8 @@ Use `docker-compose` to test the app locally. Make sure to make relevant changes
 ```bash
 docker-compose up --build
 ```
+#### NOTE: When on docker, build times may stretch to north of 120 seconds. Please be patient during the same.
+
 ### The `.env` file
 The `.env` file holds the important variables for the whole application which include the MongoDB URL, Google API keys, Redis URL, etc.
 

@@ -8,8 +8,7 @@ services:
     ports:
       - 5000:5000
     environment:
-      - SENTRY_DSN=https://edabbae15c374c92b435a3da7c8aa6e1@o499999.ingest.sentry.io/5579145
-      - GOOGLE_API_KEY=AIzaSyC__eatCyC01rG96PoL2CEJLeaaJWegWmU
+      - GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY
       - GOOGLE_API_REFRESH_INTERVAL=30
       - HOST=localhost
       - PORT=5000
@@ -18,6 +17,7 @@ services:
       - MONGO_DBNAME=fampay
       - REDIS_PORT=6379
       - REDIS_HOST=redis
+      - SENTRY_DSN=YOUR_SENTRY_DSN
       - YT_SEARCH_QUERY=music
     command:
       sh -c 'npm i && npm start'
