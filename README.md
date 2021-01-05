@@ -5,6 +5,7 @@
 ## Contents
 - [Getting Started](#getting-started)
 - [Running locally](#running-locally)
+  - [Using Docker](#using-docker)
   - [The .env file](#the-env-file)
   - [npm scripts](#npm-scripts)
 - [API endpoints](#api-endpoints)
