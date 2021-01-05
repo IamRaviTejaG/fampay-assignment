@@ -1,9 +1,7 @@
-const Sentry = require('@sentry/node')
-
-require('dotenv').config()
+import Sentry from '@sentry/node'
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN
 })
 
-module.exports = Sentry
+export default Sentry

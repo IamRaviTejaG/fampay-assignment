@@ -17,6 +17,11 @@ Start by cloning the repository using: `git clone https://github.com/IamRaviTeja
 Install all the dependencies (including the dev dependencies) using the `npm install` or `npm i` command. Once the dependencies are installed, use `npm start` to start the server.
 
 ## Running locally
+### Using Docker
+Use `docker-compose` to test the app locally. Make sure to make relevant changes to the environment variables in `docker-compose.yml` file. Use the following command to build and start the app:
+```bash
+docker-compose up --build
+```
 ### The `.env` file
 The `.env` file holds the important variables for the whole application which include the MongoDB URL, Google API keys, Redis URL, etc.
 

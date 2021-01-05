@@ -1,5 +1,6 @@
 import dbConnection from '../config/database'
 import redisClient from '../config/redis'
+import Sentry from '../utils/sentry'
 
 const itemSchema = require('../schema/itemSchema')
 const ItemModel = dbConnection.model('item', itemSchema)

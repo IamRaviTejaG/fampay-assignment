@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import Sentry from '../utils/sentry'
 
 const dbURL = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DBNAME}`
 
@@ -17,6 +18,7 @@ dbConnection.on('connected', () => {
 
 dbConnection.on('error', error => {
   console.log(`MongoDB connection couldn't be established. ${JSON.stringify(error)}`)
+  Sentry.captureException(error)
 })
 
 export default dbConnection
