@@ -24,10 +24,10 @@ export default {
       ItemModel.insertMany(results, { ordered: false }).then(_response => {
         console.log('Refreshed successfully!')
       }).catch(err => {
-        console.log(`Failed to refresh! Retrying in 20s. Error:\n${err}`)
+        console.log(`Failed to refresh! Retrying in ${process.env.GOOGLE_API_REFRESH_INTERVAL}s. Error:\n${err}`)
       })
     }).catch(err => {
-      console.log(`${err}`)
+      console.log(err)
     })
   }
 }

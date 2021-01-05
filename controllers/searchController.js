@@ -1,5 +1,5 @@
 import dbConnection from '../config/database'
-import redisClient from '../utils/redis'
+import redisClient from '../config/redis'
 
 const itemSchema = require('../schema/itemSchema')
 const ItemModel = dbConnection.model('item', itemSchema)
