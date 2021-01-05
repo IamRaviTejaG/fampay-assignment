@@ -1,6 +1,5 @@
 import dbConnection from '../config/database'
 import redisClient from '../config/redis'
-import Sentry from '../utils/sentry'
 
 const itemSchema = require('../schema/itemSchema')
 const ItemModel = dbConnection.model('item', itemSchema)
@@ -13,14 +12,14 @@ export default {
    */
   getPage: (req, res) => {
     // Validate if the user-input is an integer
-    if (parseInt(req.params.page) != req.params.page) {
-      res.status(500).json({ error: `Only integers allowed for page!` })
-    }
-
-    let page = 0; let skipValue = 0
+    let page = 0
+    let skipValue = 0
 
     // Page numbers start from 1, but offset starts from 0 for Mongo.
-    if (req.params.page !==  undefined) {
+    if (req.params.page !== undefined) {
+      if (isNaN(req.params.page)) {
+        return res.status(500).json({ error: 'Only integers allowed for page!' })
+      }
       page = req.params.page - 1
       skipValue = page * 25
     }
