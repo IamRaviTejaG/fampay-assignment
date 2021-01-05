@@ -11,11 +11,14 @@ const authKeys = process.env.GOOGLE_API_KEY.split(' | ')
 let gapi = new googleapis.youtube_v3.Youtube({
   auth: authKeys.shift() // Pop and take the first element in an array, when exhausted shift to next, and so on
 })
+
+// We fetch results only after 2019-01-01 to avoud old results
 const params = {
   part: ['snippet'],
   maxResults: 50,
   order: 'date',
   type: ['video'],
+  publishedAfter: '2019-01-01T00:00:00Z',
   q: process.env.YT_SEARCH_QUERY
 }
 

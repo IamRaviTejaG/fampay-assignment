@@ -25,10 +25,9 @@ export default {
             // Convert search_string received into a regex for title & description matching
             const searchStringRegexp = new RegExp(searchString.replace(' ', '|'))
             ItemModel.find({
-              title: { $regex: searchStringRegexp, $options: 'i' },
-              description: { $regex: searchStringRegexp, $options: 'i' }
-            }
-            ).sort({ publish_time: -1 }).limit(50).then(result => {
+              $or: [{ title: { $regex: searchStringRegexp, $options: 'i' } },
+                { description: { $regex: searchStringRegexp, $options: 'i' } }]
+            }).sort({ publish_time: -1 }).limit(50).then(result => {
               // Invalidate cached results after 5 minutes, as things might change very frequently
               redisClient.set(searchString, JSON.stringify(result), 'EX', 300).then(res => {
                 console.log(`Successfully set key: ${searchString} to Redis. Result: ${res}`)
